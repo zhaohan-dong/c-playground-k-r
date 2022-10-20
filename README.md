@@ -1,0 +1,1 @@
+The playground is based on the first edition of "The C Programming Language" by B. Kernighan and D. Ritchie.

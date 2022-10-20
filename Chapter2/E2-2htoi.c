@@ -27,7 +27,7 @@ char s[];
 
 int main() {
     int c, i = 0;
-    char arr;
+    char arr[256];
     int d;
     while ((c = getchar()) != EOF && i < 256) {
         arr[i++] = c;

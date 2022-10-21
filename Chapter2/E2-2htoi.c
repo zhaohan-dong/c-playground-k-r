@@ -30,7 +30,14 @@ int main() {
     char arr[256];
     while ((c = getchar()) != EOF && i < 256) {
         arr[i++] = c;
+        if (!((c >= '0' && c <= '9') || // input range check
+            (c >= 'a' && c <= 'f') || 
+            (c >= 'A' && c <= 'F'))) {
+                printf("\nError, check input\n");
+                return -1;
+            }
     }
     printf("%d\n", htoi(arr));
+    return 0;
 }
 

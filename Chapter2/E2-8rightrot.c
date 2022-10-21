@@ -19,7 +19,7 @@ unsigned int rightrot(unsigned x, int n) {
         if ((x & 1) == 1)
             x = (x >> 1) | ~(~0U >> 1);
         else
-            x = (x >> 1);
+            x >>= 1;
         --n;
     }
     return x; // x >> n returns left part to the right, and x << (sizeof(x) - n) returns right part to the right

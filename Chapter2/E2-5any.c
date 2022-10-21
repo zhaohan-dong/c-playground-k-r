@@ -6,7 +6,7 @@ int any(char s1[], char s2[]);
 
 int main(void) {
     int loc;
-    loc = any("Hello world", "ol");
+    loc = any("Hello world", "od");
     printf("%d\n", loc);
     return 0;
 }

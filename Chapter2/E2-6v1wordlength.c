@@ -12,8 +12,6 @@ int wordlength()
     return len + 1;
 }
 
-
-
 int main() {
     printf("%d\n", wordlength());
     return 0;

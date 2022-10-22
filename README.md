@@ -1,4 +1,4 @@
-# Playground for K&R C Second Ed Book
+# Playground for K&R C Second Ed. Book
 The playground is based on the second edition of "The C Programming Language" by B. Kernighan and D. Ritchie.<br />
 Includes some exercises from first edition.<br />
 Standard solutions available at: https://clc-wiki.net/wiki/K%26R2_solutions<br />

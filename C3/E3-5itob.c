@@ -5,12 +5,11 @@
 #include "reverse.c"
 
 int itob(int n, char s[], int b) {
-    int i, t, remainder;
-    t = n;
+    int i, remainder;
 
-    for (i = 0; t != 0; ++i) {
+    for (i = 0; n != 0; ++i) {
         // go through the int from lower to higher digits, the remainder is the digit
-        remainder = t % b;
+        remainder = n % b;
         if (remainder < 10) {
             // digit less than 11 (numbers)
             s[i] = (char) (remainder + 48);
@@ -18,7 +17,7 @@ int itob(int n, char s[], int b) {
             // digit greater than 11 (alphabet required)
             s[i] = (char) (remainder + 55);
         }
-        t = (t - remainder) / b;
+        n = (n - remainder) / b;
     }
     reverse(s);
     s[++i] = '\0';

@@ -4,6 +4,7 @@
 #include <ctype.h>
 
 #define BUFSIZE 100
+#define NUMBER '0'
 
 int getch(void);
 int getop(char s[]);
@@ -13,8 +14,8 @@ int  bufp = 0;      /* next free position in buf */
 
 int main(void) {
     int result;
-    result = getop("5321 - 2506");
-    printf("%d\n", result);
+    char c[] = "5321-2506";
+    result = getop(c);
     return 0;
 }
 
@@ -22,10 +23,16 @@ int main(void) {
 int getop(char s[])
 {
     int i, c;
+    static char buf = EOF;
 
     while ((s[0] = c = getch()) == ' ' || c == '\t')
         ;
-    s[1] = '\0';
+        if (buf == EOF || buf == ' ' || buf == '\t') {
+        while ((s[0] = c = getch()) == ' ' || c == '\t')
+            ;
+        s[1] = '\0';
+    } else
+        c = buf;
     if (!isdigit(c) && c != '.')
         return c;     /* not a number */
     i = 0;
@@ -40,8 +47,8 @@ int getop(char s[])
         if (bufp >= BUFSIZE)
         printf("ungetch: too many characters\n");
     else
-        buf[bufp++] = c;
-    return '0';
+        buf = c;
+    return NUMBER;
 }
 
 int getch(void) /* get a (possibly pushed back) character */

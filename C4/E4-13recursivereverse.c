@@ -21,6 +21,8 @@ int reverse(char s[]) {
     ++i;
     --j;
 
+    printf("%d %d\n", i, j);
+
     // exit when reaches middle, else do recursive
     if (j - i < 1) {
         return 0;

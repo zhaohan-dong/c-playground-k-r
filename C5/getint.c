@@ -1,4 +1,7 @@
+#include <stdio.h>
 #include <ctype.h>
+#include "getch.c"
+#include "ungetch.c"
 
 int getch(void);
 void ungetch(int);
@@ -6,7 +9,7 @@ void ungetch(int);
 /* getint:  get next integer from input into *pn */
 int getint(int *pn)
 {
-    int c, sign;
+    int c, sign, sawsign;
 
     while (isspace(c = getch()))   /* skip white space */
         ;
@@ -15,6 +18,14 @@ int getint(int *pn)
         return 0;
     }
     sign = (c == '-') ? -1 : 1;
+    if (sawsign = (c == '+' || c == '-'))
+        c = getch();
+    if (!isdigit(c)) {
+        ungetch(c);
+        if (sawsign)
+            ungetch((sign == -1) ? '-' : '+');
+        return 0;
+    }
     if (c == '+' || c == '-')
         c = getch();
     for (*pn = 0; isdigit(c); c = getch())

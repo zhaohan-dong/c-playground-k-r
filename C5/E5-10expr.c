@@ -3,14 +3,46 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
+#include <ctype.h>
 
 void push(double f);
 double pop(void);
 
+
 int main(int argc, char *argv[]) {
+    int c, type;
+    double result;
     while (--argc > 0) {
         *++argv;
+        if (!isdigit(c = **argv) && strlen(*argv) == 1) {
+            type = c;
+        } else {
+            type = 0;
+        }
+        switch (type) {
+            case '+':
+                printf("h");
+                push(pop() + pop());
+                break;
+            case '-':
+                push(- pop() + pop());
+                break;
+            case '*':
+                push(pop() * pop());
+                break;
+            case '/':
+                push(1 / pop() * pop());
+                break;
+            case 0:
+                printf("num");
+                push(atof(*argv));
+                break;
+        }
     }
+    result = pop();
+    printf("%g\n", result);
+    return 0;
 }
 
 
